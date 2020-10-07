@@ -14,11 +14,20 @@
 		"AzureSynapseAnalytics1_connectionString": {
 			"value": ""
 		},
+		"FileServer1_password": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://bcidatalake.dfs.core.windows.net"
 		},
 		"Snowflake1_connectionString": {
 			"value": ""
+		},
+		"FileServer1_properties_typeProperties_host": {
+			"value": "\\\\WIN10VM020\\tmp"
+		},
+		"FileServer1_properties_typeProperties_userId": {
+			"value": "bcimc\\tmiwa"
 		},
 		"containerUri": {
 			"value": ""
