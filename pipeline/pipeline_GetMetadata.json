@@ -150,7 +150,10 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
-										"wildcardFileName": "@(item().name)"
+										"wildcardFileName": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
 									},
 									"formatSettings": {
 										"type": "DelimitedTextReadSettings"
