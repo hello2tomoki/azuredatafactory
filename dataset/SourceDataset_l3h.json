@@ -1,0 +1,74 @@
+{
+	"name": "SourceDataset_l3h",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Client_Data_Demo.csv",
+				"folderPath": "client",
+				"container": "data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "EFFECTIVE_DATE",
+				"type": "String"
+			},
+			{
+				"name": "Blend Total Fund",
+				"type": "String"
+			},
+			{
+				"name": "Client Name",
+				"type": "String"
+			},
+			{
+				"name": "liquidIlliquid8",
+				"type": "String"
+			},
+			{
+				"name": "Asset Class",
+				"type": "String"
+			},
+			{
+				"name": "Sub Asset Class",
+				"type": "String"
+			},
+			{
+				"name": "SubPoolClass",
+				"type": "String"
+			},
+			{
+				"name": "assetMixLevel",
+				"type": "String"
+			},
+			{
+				"name": "Pools",
+				"type": "String"
+			},
+			{
+				"name": "Pool Code",
+				"type": "String"
+			},
+			{
+				"name": "Total Fund Pool Code Name",
+				"type": "String"
+			},
+			{
+				"name": "Market Value of the Pool",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

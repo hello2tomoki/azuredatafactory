@@ -1,0 +1,90 @@
+{
+	"name": "SnowflakeTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Snowflake1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeTable",
+		"schema": [
+			{
+				"name": "EFFECTIVE_DATE",
+				"type": "VARCHAR",
+				"precision": 160,
+				"scale": 0
+			},
+			{
+				"name": "BLENDTOTALFUND",
+				"type": "VARCHAR",
+				"precision": 31,
+				"scale": 0
+			},
+			{
+				"name": "CLIENTNAME",
+				"type": "VARCHAR",
+				"precision": 100,
+				"scale": 0
+			},
+			{
+				"name": "LIQUIDILLIQUID8",
+				"type": "VARCHAR",
+				"precision": 64,
+				"scale": 0
+			},
+			{
+				"name": "ASSETCLASS",
+				"type": "VARCHAR",
+				"precision": 64,
+				"scale": 0
+			},
+			{
+				"name": "SUBASSETCLASS",
+				"type": "VARCHAR",
+				"precision": 64,
+				"scale": 0
+			},
+			{
+				"name": "SUBPOOLCLASS",
+				"type": "VARCHAR",
+				"precision": 64,
+				"scale": 0
+			},
+			{
+				"name": "ASSETMIXLEVEL",
+				"type": "VARCHAR",
+				"precision": 64,
+				"scale": 0
+			},
+			{
+				"name": "POOLS",
+				"type": "VARCHAR",
+				"precision": 121,
+				"scale": 0
+			},
+			{
+				"name": "POOLCODE",
+				"type": "VARCHAR",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "TOTALFUNDPOOLCODENAME",
+				"type": "VARCHAR",
+				"precision": 100,
+				"scale": 0
+			},
+			{
+				"name": "MARKETVALUE",
+				"type": "FLOAT",
+				"precision": 15,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "PUBLIC",
+			"table": "CLIENTDATA"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

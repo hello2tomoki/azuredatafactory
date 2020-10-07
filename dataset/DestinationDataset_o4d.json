@@ -1,0 +1,67 @@
+{
+	"name": "DestinationDataset_o4d",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSynapseAnalytics1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "EFFECTIVE_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Blend Total Fund",
+				"type": "varchar"
+			},
+			{
+				"name": "Client Name",
+				"type": "varchar"
+			},
+			{
+				"name": "liquidIlliquid8",
+				"type": "varchar"
+			},
+			{
+				"name": "Asset Class",
+				"type": "varchar"
+			},
+			{
+				"name": "Sub Asset Class",
+				"type": "varchar"
+			},
+			{
+				"name": "SubPoolClass",
+				"type": "varchar"
+			},
+			{
+				"name": "assetMixLevel",
+				"type": "varchar"
+			},
+			{
+				"name": "Pools",
+				"type": "varchar"
+			},
+			{
+				"name": "Pool Code",
+				"type": "varchar"
+			},
+			{
+				"name": "Total Fund Pool Code Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Market Value of the Pool",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "prod",
+			"table": "ClientData_df"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,28 @@
+{
+	"name": "dataflow_Snowflake",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SourceDataset_l3h",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "SnowflakeTable1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"script": "source(output(\n\t\tEFFECTIVE_DATE as string,\n\t\t{Blend Total Fund} as string,\n\t\t{Client Name} as string,\n\t\tliquidIlliquid8 as string,\n\t\t{Asset Class} as string,\n\t\t{Sub Asset Class} as string,\n\t\tSubPoolClass as string,\n\t\tassetMixLevel as string,\n\t\tPools as string,\n\t\t{Pool Code} as string,\n\t\t{Total Fund Pool Code Name} as string,\n\t\t{Market Value of the Pool} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['client/*']) ~> source1\nsource1 sink(input(\n\t\tEFFECTIVE_DATE as string,\n\t\tBLENDTOTALFUND as string,\n\t\tCLIENTNAME as string,\n\t\tLIQUIDILLIQUID8 as string,\n\t\tASSETCLASS as string,\n\t\tSUBASSETCLASS as string,\n\t\tSUBPOOLCLASS as string,\n\t\tASSETMIXLEVEL as string,\n\t\tPOOLS as string,\n\t\tPOOLCODE as string,\n\t\tTOTALFUNDPOOLCODENAME as string,\n\t\tMARKETVALUE as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\ttruncate:true,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

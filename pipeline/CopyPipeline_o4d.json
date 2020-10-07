@@ -1,0 +1,199 @@
+{
+	"name": "CopyPipeline_o4d",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_o4d",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "data//Client_Data_Demo.txt"
+					},
+					{
+						"name": "Destination",
+						"value": "prod.ClientData_df"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": "0"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": true
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "AzureBlobStorage1",
+							"type": "LinkedServiceReference"
+						},
+						"path": "data"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "EFFECTIVE_DATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EFFECTIVE_DATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Blend Total Fund",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Blend Total Fund",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Client Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Client Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "liquidIlliquid8",
+									"type": "String"
+								},
+								"sink": {
+									"name": "liquidIlliquid8",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Asset Class",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Asset Class",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Sub Asset Class",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Sub Asset Class",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SubPoolClass",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SubPoolClass",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "assetMixLevel",
+									"type": "String"
+								},
+								"sink": {
+									"name": "assetMixLevel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Pools",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Pools",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Pool Code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Pool Code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Total Fund Pool Code Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Total Fund Pool Code Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Market Value of the Pool",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Market Value of the Pool",
+									"type": "Double"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_o4d",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_o4d",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-10-01T02:34:47Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
