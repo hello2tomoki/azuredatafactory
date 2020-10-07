@@ -122,6 +122,9 @@
 				"type": "Array"
 			}
 		},
+		"folder": {
+			"name": "training"
+		},
 		"annotations": [],
 		"lastPublishTime": "2020-10-07T03:56:37Z"
 	},

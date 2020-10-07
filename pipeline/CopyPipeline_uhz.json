@@ -193,6 +193,9 @@
 				]
 			}
 		],
+		"folder": {
+			"name": "training"
+		},
 		"annotations": [],
 		"lastPublishTime": "2020-10-01T21:38:32Z"
 	},

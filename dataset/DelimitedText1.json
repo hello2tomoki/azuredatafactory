@@ -5,6 +5,9 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "blob"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

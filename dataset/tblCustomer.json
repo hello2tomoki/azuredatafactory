@@ -5,6 +5,9 @@
 			"referenceName": "Snowflake1",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "snowflake"
+		},
 		"annotations": [],
 		"type": "SnowflakeTable",
 		"schema": [

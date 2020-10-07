@@ -5,6 +5,9 @@
 			"referenceName": "AzureSynapseAnalytics1",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "synapse"
+		},
 		"annotations": [],
 		"type": "AzureSqlDWTable",
 		"schema": [

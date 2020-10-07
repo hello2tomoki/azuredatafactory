@@ -1,96 +1,102 @@
 {
-    "name": "ControlFlow2_PL_2",
-    "properties": {
-        "activities": [
-            {
-                "name": "Lookup_AC",
-                "type": "Lookup",
-                "policy": {
-                    "timeout": "7.00:00:00",
-                    "retry": 0,
-                    "retryIntervalInSeconds": 30,
-                    "secureOutput": false,
-                    "secureInput": false
-                },
-                "typeProperties": {
-                    "source": {
-                        "type": "SqlSource"
-                    },
-                    "dataset": {
-                        "referenceName": "TableList_DS",
-                        "type": "DatasetReference"
-                    },
-                    "firstRowOnly": false
-                }
-            },
-            {
-                "name": "Set_Variable_AC",
-                "type": "SetVariable",
-                "dependsOn": [
-                    {
-                        "activity": "Lookup_AC",
-                        "dependencyConditions": [
-                            "Succeeded"
-                        ]
-                    }
-                ],
-                "typeProperties": {
-                    "variableName": "TableNames",
-                    "value": [
-                        "@activity('Lookup_AC').output.value"
-                    ]
-                }
-            },
-            {
-                "name": "Filter_AC",
-                "type": "Filter",
-                "dependsOn": [
-                    {
-                        "activity": "Lookup_AC",
-                        "dependencyConditions": [
-                            "Succeeded"
-                        ]
-                    }
-                ],
-                "typeProperties": {
-                    "items": {
-                        "value": "@activity('Lookup_AC').output.value",
-                        "type": "Expression"
-                    },
-                    "condition": {
-                        "value": "@startswith(string(item().name),'P')",
-                        "type": "Expression"
-                    }
-                }
-            },
-            {
-                "name": "Set_Variable2_AC",
-                "type": "SetVariable",
-                "dependsOn": [
-                    {
-                        "activity": "Filter_AC",
-                        "dependencyConditions": [
-                            "Succeeded"
-                        ]
-                    }
-                ],
-                "typeProperties": {
-                    "variableName": "FilteredTableNames",
-                    "value": {
-                        "value": "@activity('Filter_AC').output.value",
-                        "type": "Expression"
-                    }
-                }
-            }
-        ],
-        "variables": {
-            "TableNames": {
-                "type": "Array"
-            },
-            "FilteredTableNames": {
-                "type": "Array"
-            }
-        }
-    },
-    "type": "Microsoft.DataFactory/factories/pipelines"
+	"name": "ControlFlow2_PL_2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup_AC",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"partitionOption": "None"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Set_Variable_AC",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Lookup_AC",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "TableNames",
+					"value": [
+						"@activity('Lookup_AC').output.value"
+					]
+				}
+			},
+			{
+				"name": "Filter_AC",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Lookup_AC",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup_AC').output.value",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@startswith(string(item().name),'P')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set_Variable2_AC",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Filter_AC",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "FilteredTableNames",
+					"value": {
+						"value": "@activity('Filter_AC').output.value",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"TableNames": {
+				"type": "Array"
+			},
+			"FilteredTableNames": {
+				"type": "Array"
+			}
+		},
+		"folder": {
+			"name": "sample"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }
