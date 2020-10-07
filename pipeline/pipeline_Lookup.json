@@ -29,7 +29,7 @@
 				}
 			},
 			{
-				"name": "Filter_TableName",
+				"name": "Filter_LKDataSet",
 				"type": "Filter",
 				"dependsOn": [
 					{
@@ -46,17 +46,17 @@
 						"type": "Expression"
 					},
 					"condition": {
-						"value": "@startswith(string(item().name),'Enabled')",
+						"value": "@startswith(string(item().Enabled),'1')",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Append variable1",
-				"type": "AppendVariable",
+				"name": "Filter_Table",
+				"type": "Filter",
 				"dependsOn": [
 					{
-						"activity": "Filter_TableName",
+						"activity": "Filter_LKDataSet",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -64,25 +64,14 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "TableNameFiltered",
-					"value": ""
-				}
-			},
-			{
-				"name": "Append variable2",
-				"type": "AppendVariable",
-				"dependsOn": [
-					{
-						"activity": "LK_Config",
-						"dependencyConditions": [
-							"Succeeded"
-						]
+					"items": {
+						"value": "@activity('Filter_LKDataSet').output.value",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item.Name)",
+						"type": "Expression"
 					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "TableName",
-					"value": ""
 				}
 			}
 		],
