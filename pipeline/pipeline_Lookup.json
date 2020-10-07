@@ -1,5 +1,5 @@
 {
-	"name": "pipeline2",
+	"name": "pipeline_Lookup",
 	"properties": {
 		"activities": [
 			{
@@ -26,6 +26,25 @@
 						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Filter1",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup1').output.childitems",
+						"type": "Expression"
+					}
 				}
 			}
 		],
