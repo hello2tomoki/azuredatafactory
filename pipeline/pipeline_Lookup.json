@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup1",
+				"name": "LK_Config",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -29,11 +29,11 @@
 				}
 			},
 			{
-				"name": "Filter1",
+				"name": "Filter_TableName",
 				"type": "Filter",
 				"dependsOn": [
 					{
-						"activity": "Lookup1",
+						"activity": "LK_Config",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -42,12 +42,24 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Lookup1').output.childitems",
+						"value": "@activity('LK_Config').output.value",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@startswith(string(item().name),'Enabled')",
 						"type": "Expression"
 					}
 				}
 			}
 		],
+		"variables": {
+			"TableName": {
+				"type": "Array"
+			},
+			"TableNameFiltered": {
+				"type": "Array"
+			}
+		},
 		"folder": {
 			"name": "assignment"
 		},
