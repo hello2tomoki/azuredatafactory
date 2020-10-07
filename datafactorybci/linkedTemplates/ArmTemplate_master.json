@@ -27,10 +27,6 @@
 			"type": "string",
 			"defaultValue": "https://bcidatalake.dfs.core.windows.net"
 		},
-		"Snowflake1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'Snowflake1'"
-		},
 		"FileServer1_properties_typeProperties_host": {
 			"type": "string",
 			"defaultValue": "\\\\WIN10VM020\\tmp"
@@ -38,6 +34,10 @@
 		"FileServer1_properties_typeProperties_userId": {
 			"type": "string",
 			"defaultValue": "bcimc\\tmiwa"
+		},
+		"Snowflake1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Snowflake1'"
 		},
 		"containerUri": {
 			"type": "string",
