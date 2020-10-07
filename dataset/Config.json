@@ -1,5 +1,5 @@
 {
-	"name": "tblConfig",
+	"name": "Config",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Snowflake1",
