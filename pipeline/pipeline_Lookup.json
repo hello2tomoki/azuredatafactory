@@ -71,7 +71,7 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Append variable1",
+							"name": "Append TableNameFiltered",
 							"type": "AppendVariable",
 							"dependsOn": [],
 							"userProperties": [],
@@ -85,6 +85,72 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Filter_LKTableNameCustomer",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "LK_Config",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('LK_Config').output.value",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@startswith(string(item().Name),'Customer')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "If Enabled Is 1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Filter_LKTableNameCustomer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@equals(activity('Filter_LKTableNameCustomer').output.firstrow.enabled,1)",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "Append variable3",
+							"type": "AppendVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "DataTransferActive",
+								"value": "No"
+							}
+						}
+					],
+					"ifTrueActivities": [
+						{
+							"name": "Append variable2",
+							"type": "AppendVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "DataTransferActive",
+								"value": "Yes"
+							}
+						}
+					]
+				}
 			}
 		],
 		"variables": {
@@ -92,6 +158,9 @@
 				"type": "Array"
 			},
 			"TableNameFiltered": {
+				"type": "Array"
+			},
+			"DataTransferActive": {
 				"type": "Array"
 			}
 		},
