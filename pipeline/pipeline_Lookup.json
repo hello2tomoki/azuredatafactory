@@ -148,6 +148,43 @@
 								"variableName": "DataTransferActive",
 								"value": "True"
 							}
+						},
+						{
+							"name": "dataflow2",
+							"type": "ExecuteDataFlow",
+							"dependsOn": [
+								{
+									"activity": "Append DataTransfer As True",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataflow": {
+									"referenceName": "dataflow2",
+									"type": "DataFlowReference"
+								},
+								"staging": {
+									"linkedService": {
+										"referenceName": "AzureBlobStorage1",
+										"type": "LinkedServiceReference"
+									},
+									"folderPath": "data"
+								},
+								"compute": {
+									"coreCount": 8,
+									"computeType": "General"
+								}
+							}
 						}
 					]
 				}
