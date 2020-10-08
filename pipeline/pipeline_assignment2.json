@@ -1,0 +1,151 @@
+{
+	"name": "pipeline_assignment2",
+	"properties": {
+		"activities": [
+			{
+				"name": "LK_Config",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SnowflakeSource",
+						"exportSettings": {
+							"type": "SnowflakeExportCopyCommand"
+						}
+					},
+					"dataset": {
+						"referenceName": "Config",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Filter_LKTableNameCustomer",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "LK_Config",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('LK_Config').output.value",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@startswith(string(item().Name),'Customer')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "If Enabled Is 1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Filter_LKTableNameCustomer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@equals(activity('Filter_LKTableNameCustomer').output.value[0].Enabled,\n'1')",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "Append DataTransfer As False",
+							"type": "AppendVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "DataTransferActive",
+								"value": "False"
+							}
+						}
+					],
+					"ifTrueActivities": [
+						{
+							"name": "Append DataTransfer As True",
+							"type": "AppendVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "DataTransferActive",
+								"value": "True"
+							}
+						},
+						{
+							"name": "dataflow2",
+							"type": "ExecuteDataFlow",
+							"dependsOn": [
+								{
+									"activity": "Append DataTransfer As True",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataflow": {
+									"referenceName": "dataflow2",
+									"type": "DataFlowReference"
+								},
+								"staging": {
+									"linkedService": {
+										"referenceName": "AzureBlobStorage1",
+										"type": "LinkedServiceReference"
+									},
+									"folderPath": "data"
+								},
+								"compute": {
+									"coreCount": 8,
+									"computeType": "General"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "Array"
+			},
+			"TableNameFiltered": {
+				"type": "Array"
+			},
+			"DataTransferActive": {
+				"type": "Array"
+			}
+		},
+		"folder": {
+			"name": "assignment"
+		},
+		"annotations": []
+	}
+}
