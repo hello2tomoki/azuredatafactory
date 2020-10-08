@@ -128,7 +128,7 @@
 					},
 					"ifFalseActivities": [
 						{
-							"name": "Append variable3",
+							"name": "Append DataTransfer As False",
 							"type": "AppendVariable",
 							"dependsOn": [],
 							"userProperties": [],
@@ -140,7 +140,7 @@
 					],
 					"ifTrueActivities": [
 						{
-							"name": "Append variable2",
+							"name": "Append DataTransfer As True",
 							"type": "AppendVariable",
 							"dependsOn": [],
 							"userProperties": [],
