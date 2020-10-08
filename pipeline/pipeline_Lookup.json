@@ -123,7 +123,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@equals(activity('Filter_LKTableNameCustomer').output.firstrow.enabled,1)",
+						"value": "@equals(activity('Filter_LKTableNameCustomer').output.value[0].Enabled,1)",
 						"type": "Expression"
 					},
 					"ifFalseActivities": [
