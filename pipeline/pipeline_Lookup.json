@@ -52,8 +52,8 @@
 				}
 			},
 			{
-				"name": "Filter_Table",
-				"type": "Filter",
+				"name": "ForEach1",
+				"type": "ForEach",
 				"dependsOn": [
 					{
 						"activity": "Filter_LKDataSet",
@@ -68,10 +68,22 @@
 						"value": "@activity('Filter_LKDataSet').output.value",
 						"type": "Expression"
 					},
-					"condition": {
-						"value": "@item().name",
-						"type": "Expression"
-					}
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Append variable1",
+							"type": "AppendVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "TableNameFiltered",
+								"value": {
+									"value": "@item().name",
+									"type": "Expression"
+								}
+							}
+						}
+					]
 				}
 			}
 		],
