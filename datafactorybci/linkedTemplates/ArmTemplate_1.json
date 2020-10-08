@@ -207,7 +207,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/CopyPipeline_o4d')]",
+			"name": "[concat(parameters('factoryName'), '/CopyPipeline_synapse')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -620,13 +620,13 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pipeline2')]",
+			"name": "[concat(parameters('factoryName'), '/pipeline_Lookup')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Lookup1",
+						"name": "LK_Config",
 						"type": "Lookup",
 						"dependsOn": [],
 						"policy": {
@@ -651,8 +651,74 @@
 							},
 							"firstRowOnly": false
 						}
+					},
+					{
+						"name": "Filter_LKDataSet",
+						"type": "Filter",
+						"dependsOn": [
+							{
+								"activity": "LK_Config",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('LK_Config').output.value",
+								"type": "Expression"
+							},
+							"condition": {
+								"value": "@startswith(string(item().Enabled),'1')",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "ForEach1",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Filter_LKDataSet",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Filter_LKDataSet').output.value",
+								"type": "Expression"
+							},
+							"isSequential": true,
+							"activities": [
+								{
+									"name": "Append variable1",
+									"type": "AppendVariable",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "TableNameFiltered",
+										"value": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
 					}
 				],
+				"variables": {
+					"TableName": {
+						"type": "Array"
+					},
+					"TableNameFiltered": {
+						"type": "Array"
+					}
+				},
 				"folder": {
 					"name": "assignment"
 				},
@@ -661,7 +727,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pipeline_GetMetadata')]",
+			"name": "[concat(parameters('factoryName'), '/pipeline_GetMetadata_ForEach')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
