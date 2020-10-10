@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dataflow_Snowflake",
+						"referenceName": "dataflow_CSV_Snowflake",
 						"type": "DataFlowReference"
 					},
 					"compute": {
