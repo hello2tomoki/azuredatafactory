@@ -23,9 +23,12 @@
 			"transformations": [
 				{
 					"name": "LKdepartment"
+				},
+				{
+					"name": "ConditionalSplit1"
 				}
 			],
-			"script": "source(output(\n\t\tCUST_ID as decimal(38,0),\n\t\tCUSTOMER_NAME as string,\n\t\tDEPT_ID as decimal(38,0)\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'query',\n\tquery: 'SELECT * FROM DBO.CUSTOMER',\n\tstore: 'snowflake') ~> customer\nsource(output(\n\t\tDEPT_ID as decimal(38,0),\n\t\tDEPT_NAME as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'table',\n\ttableName: 'DEPARTMENT',\n\tschemaName: 'DBO',\n\tstore: 'snowflake') ~> department\ncustomer, department lookup(customer@DEPT_ID == department@DEPT_ID,\n\tmultiple: true,\n\tbroadcast: 'auto')~> LKdepartment"
+			"script": "source(output(\n\t\tCUST_ID as decimal(38,0),\n\t\tCUSTOMER_NAME as string,\n\t\tDEPT_ID as decimal(38,0)\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'query',\n\tquery: 'SELECT * FROM DBO.CUSTOMER',\n\tstore: 'snowflake') ~> customer\nsource(output(\n\t\tDEPT_ID as decimal(38,0),\n\t\tDEPT_NAME as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'table',\n\ttableName: 'DEPARTMENT',\n\tschemaName: 'DBO',\n\tstore: 'snowflake') ~> department\ncustomer, department lookup(customer@DEPT_ID == department@DEPT_ID,\n\tmultiple: true,\n\tbroadcast: 'auto')~> LKdepartment\nLKdepartment split(DEPT_NAME=='HR'\n,\n\tDEPT_NAME=='Finance',\n\tdisjoint: true) ~> ConditionalSplit1@(HR, Finance, Other)"
 		}
 	}
 }
