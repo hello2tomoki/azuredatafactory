@@ -112,7 +112,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "dataflow2",
+									"referenceName": "dataflow_snowflake_Synapse",
 									"type": "DataFlowReference"
 								},
 								"staging": {

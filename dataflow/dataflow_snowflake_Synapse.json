@@ -1,6 +1,7 @@
 {
-	"name": "dataflow2",
+	"name": "dataflow_snowflake_Synapse",
 	"properties": {
+		"description": "Customer\n",
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
