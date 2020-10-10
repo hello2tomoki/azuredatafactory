@@ -1,5 +1,5 @@
 {
-	"name": "dataflow_Snowflake",
+	"name": "dataflow_CSV_Snowflake",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
