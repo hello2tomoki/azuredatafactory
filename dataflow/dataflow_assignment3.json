@@ -25,7 +25,7 @@
 					"name": "LKdepartment"
 				}
 			],
-			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'query',\n\tquery: 'SELECT * FROM DBO.CUSTOMER',\n\tstore: 'snowflake') ~> customer\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'table',\n\ttableName: 'DEPARTMENT',\n\tschemaName: 'DBO',\n\tstore: 'snowflake') ~> department\ncustomer, department lookup(ERROR_FUNCTION('') == ERROR_FUNCTION(''),\n\tmultiple: false,\n\tpickup: 'any',\n\tbroadcast: 'auto')~> LKdepartment"
+			"script": "source(output(\n\t\tCUST_ID as decimal(38,0),\n\t\tCUSTOMER_NAME as string,\n\t\tDEPT_ID as decimal(38,0)\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'query',\n\tquery: 'SELECT * FROM DBO.CUSTOMER',\n\tstore: 'snowflake') ~> customer\nsource(output(\n\t\tDEPT_ID as decimal(38,0),\n\t\tDEPT_NAME as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'table',\n\ttableName: 'DEPARTMENT',\n\tschemaName: 'DBO',\n\tstore: 'snowflake') ~> department\ncustomer, department lookup(customer@DEPT_ID == department@DEPT_ID,\n\tmultiple: true,\n\tbroadcast: 'auto')~> LKdepartment"
 		}
 	}
 }
