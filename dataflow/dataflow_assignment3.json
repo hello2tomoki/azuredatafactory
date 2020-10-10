@@ -1,0 +1,31 @@
+{
+	"name": "dataflow_assignment3",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "Snowflake1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "customer"
+				},
+				{
+					"linkedService": {
+						"referenceName": "Snowflake1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "department"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "LKdepartment"
+				}
+			],
+			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'query',\n\tquery: 'SELECT * FROM DBO.CUSTOMER',\n\tstore: 'snowflake') ~> customer\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'table',\n\ttableName: 'DEPARTMENT',\n\tschemaName: 'DBO',\n\tstore: 'snowflake') ~> department\ncustomer, department lookup(ERROR_FUNCTION('') == ERROR_FUNCTION(''),\n\tmultiple: false,\n\tpickup: 'any',\n\tbroadcast: 'auto')~> LKdepartment"
+		}
+	}
+}
