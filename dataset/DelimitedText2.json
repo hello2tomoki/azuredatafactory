@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "MASTER_FN_POSITION_V1.csv",
 				"folderPath": "SCD",
 				"container": "data"
 			},
