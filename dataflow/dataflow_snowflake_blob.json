@@ -1,0 +1,28 @@
+{
+	"name": "dataflow_snowflake_blob",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "Snowflake1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "snowflake"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText2",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tlimit: 100,\n\tformat: 'table',\n\ttableName: 'MASTER_FN_POSITION_V1',\n\tschemaName: 'SCD',\n\tstore: 'snowflake') ~> snowflake\nsnowflake sink(input(\n\t\tCountry as string,\n\t\tAge as string,\n\t\tSalary as string,\n\t\tPurchased as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

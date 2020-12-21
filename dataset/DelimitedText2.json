@@ -1,0 +1,39 @@
+{
+	"name": "DelimitedText2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Country",
+				"type": "String"
+			},
+			{
+				"name": "Age",
+				"type": "String"
+			},
+			{
+				"name": "Salary",
+				"type": "String"
+			},
+			{
+				"name": "Purchased",
+				"type": "String"
+			}
+		]
+	}
+}
