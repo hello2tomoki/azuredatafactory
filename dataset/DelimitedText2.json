@@ -10,10 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "@SCD.MASTER_FN_POSITION_V1.addToTime().csv",
-					"type": "Expression"
-				},
 				"folderPath": "SCD",
 				"container": "data"
 			},
