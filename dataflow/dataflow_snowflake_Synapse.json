@@ -2,6 +2,9 @@
 	"name": "dataflow_snowflake_Synapse",
 	"properties": {
 		"description": "Customer\n",
+		"folder": {
+			"name": "archived"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [

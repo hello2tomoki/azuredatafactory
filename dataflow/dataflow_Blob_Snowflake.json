@@ -1,6 +1,9 @@
 {
 	"name": "dataflow_Blob_Snowflake",
 	"properties": {
+		"folder": {
+			"name": "archived"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
@@ -22,7 +25,7 @@
 				}
 			],
 			"transformations": [],
-			"script": "source(output(\n\t\tId as string,\n\t\tName as string,\n\t\tCity as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\ttableName: 'COPYDEMO',\n\tschemaName: 'PUBLIC',\n\tdeletable: false,\n\tinsertable: true,\n\tupdateable: false,\n\tupsertable: false,\n\ttruncate: true,\n\tstore: 'snowflake',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+			"script": "source(output(\n\t\tId as string,\n\t\tName as string,\n\t\tCity as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\ttableName: 'COPYDEMO',\n\tschemaName: 'PUBLIC',\n\tdeletable: false,\n\tinsertable: true,\n\tupdateable: false,\n\tupsertable: false,\n\ttruncate: true,\n\tstore: 'snowflake',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tstageInsert: true) ~> sink1"
 		}
 	}
 }

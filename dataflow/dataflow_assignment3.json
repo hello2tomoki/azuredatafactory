@@ -1,6 +1,9 @@
 {
 	"name": "dataflow_assignment3",
 	"properties": {
+		"folder": {
+			"name": "archived"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
@@ -43,7 +46,7 @@
 					"name": "ConditionalSplit1"
 				}
 			],
-			"script": "source(output(\n\t\tCUST_ID as decimal(38,0),\n\t\tCUSTOMER_NAME as string,\n\t\tDEPT_ID as decimal(38,0)\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'query',\n\tquery: 'SELECT * FROM DBO.CUSTOMER',\n\tstore: 'snowflake') ~> customer\nsource(output(\n\t\tDEPT_ID as decimal(38,0),\n\t\tDEPT_NAME as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'table',\n\ttableName: 'DEPARTMENT',\n\tschemaName: 'DBO',\n\tstore: 'snowflake') ~> department\ncustomer, department lookup(customer@DEPT_ID == department@DEPT_ID,\n\tmultiple: true,\n\tbroadcast: 'auto')~> LKdepartment\nLKdepartment split(DEPT_NAME=='HR'\n,\n\tDEPT_NAME=='Finance',\n\tdisjoint: false) ~> ConditionalSplit1@(HR, Finance, Other)\nConditionalSplit1@HR sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\ttableName: 'HR',\n\tschemaName: 'DBO',\n\tdeletable: false,\n\tinsertable: true,\n\tupdateable: false,\n\tupsertable: false,\n\ttruncate: true,\n\tstore: 'snowflake',\n\tmapColumn(\n\t\tCUST_ID,\n\t\tCUSTOMER_NAME\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkHR\nConditionalSplit1@Finance sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\ttableName: 'FINANCE',\n\tschemaName: 'DBO',\n\tdeletable: false,\n\tinsertable: true,\n\tupdateable: false,\n\tupsertable: false,\n\tstore: 'snowflake',\n\tmapColumn(\n\t\tCUST_ID,\n\t\tCUSTOMER_NAME\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkFinance"
+			"script": "source(output(\n\t\tCUST_ID as decimal(38,0),\n\t\tCUSTOMER_NAME as string,\n\t\tDEPT_ID as decimal(38,0)\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'query',\n\tquery: 'SELECT * FROM DBO.CUSTOMER',\n\tstore: 'snowflake') ~> customer\nsource(output(\n\t\tDEPT_ID as decimal(38,0),\n\t\tDEPT_NAME as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'table',\n\ttableName: 'DEPARTMENT',\n\tschemaName: 'DBO',\n\tstore: 'snowflake') ~> department\ncustomer, department lookup(customer@DEPT_ID == department@DEPT_ID,\n\tmultiple: true,\n\tbroadcast: 'auto')~> LKdepartment\nLKdepartment split(DEPT_NAME=='HR',\n\tDEPT_NAME=='Finance',\n\tdisjoint: false) ~> ConditionalSplit1@(HR, Finance, Other)\nConditionalSplit1@HR sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\ttableName: 'HR',\n\tschemaName: 'DBO',\n\tdeletable: false,\n\tinsertable: true,\n\tupdateable: false,\n\tupsertable: false,\n\ttruncate: true,\n\tstore: 'snowflake',\n\tmapColumn(\n\t\tCUST_ID,\n\t\tCUSTOMER_NAME\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tstageInsert: true) ~> sinkHR\nConditionalSplit1@Finance sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\ttableName: 'FINANCE',\n\tschemaName: 'DBO',\n\tdeletable: false,\n\tinsertable: true,\n\tupdateable: false,\n\tupsertable: false,\n\tstore: 'snowflake',\n\tmapColumn(\n\t\tCUST_ID,\n\t\tCUSTOMER_NAME\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tstageInsert: true) ~> sinkFinance"
 		}
 	}
 }
