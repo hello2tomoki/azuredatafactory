@@ -10,10 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "test.csv",
-					"type": "Expression"
-				},
 				"folderPath": "SCD",
 				"container": "data"
 			},
