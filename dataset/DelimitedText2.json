@@ -10,6 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "test.csv",
+					"type": "Expression"
+				},
 				"folderPath": "SCD",
 				"container": "data"
 			},
@@ -20,19 +24,443 @@
 		},
 		"schema": [
 			{
-				"name": "Country",
+				"name": "MASTER_FN_POSITION_V1_KEY",
 				"type": "String"
 			},
 			{
-				"name": "Age",
+				"name": "EDM_PORTFOLIO_ID",
 				"type": "String"
 			},
 			{
-				"name": "Salary",
+				"name": "EDM_INSTRUMENT_ID",
 				"type": "String"
 			},
 			{
-				"name": "Purchased",
+				"name": "EFFECTIVE_DATE",
+				"type": "String"
+			},
+			{
+				"name": "SOURCE",
+				"type": "String"
+			},
+			{
+				"name": "SUB_PORTFOLIO_CODE",
+				"type": "String"
+			},
+			{
+				"name": "ACCOUNTING_FRAMEWORK",
+				"type": "String"
+			},
+			{
+				"name": "ACCRUED_INTEREST_BASE",
+				"type": "String"
+			},
+			{
+				"name": "ACCRUED_INTEREST_EOP_BASE",
+				"type": "String"
+			},
+			{
+				"name": "ACCRUED_INTEREST_EOP_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "ACCRUED_INTEREST_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "ACCRUED_INTEREST_UNSETTLED_BASE",
+				"type": "String"
+			},
+			{
+				"name": "ACCRUED_INTEREST_UNSETTLED_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "ACCRUED_INTEREST_FUTURE_VALUE_BASE",
+				"type": "String"
+			},
+			{
+				"name": "ACCRUED_INTEREST_FUTURE_VALUE_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "ACTIVE_INDICATOR",
+				"type": "String"
+			},
+			{
+				"name": "ALLOCATED_PL_IFRS",
+				"type": "String"
+			},
+			{
+				"name": "ALLOCATED_PL_TRXGL",
+				"type": "String"
+			},
+			{
+				"name": "AMORTIZED_BOOK_VALUE_BASE",
+				"type": "String"
+			},
+			{
+				"name": "AMORTIZED_BOOK_VALUE_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "BALANCE_AMORTISED_COST_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "BALANCE_CASH_TRADE_DATE",
+				"type": "String"
+			},
+			{
+				"name": "BALANCE_COMMITMENT_BASE",
+				"type": "String"
+			},
+			{
+				"name": "BALANCE_COMMITMENT_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "BALANCE_NUMBER_OF_UNITS",
+				"type": "String"
+			},
+			{
+				"name": "BALANCE_UNPAID_COMMITMENT_BASE",
+				"type": "String"
+			},
+			{
+				"name": "BALANCE_UNPAID_COMMITMENT_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "BALANCE_VARIATION_MARGIN_BASE",
+				"type": "String"
+			},
+			{
+				"name": "BALANCE_VARIATION_MARGIN_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "BLOCKING_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "BOOKED_PRICE_BASE",
+				"type": "String"
+			},
+			{
+				"name": "BOOKED_PRICE_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "COMPOUND",
+				"type": "String"
+			},
+			{
+				"name": "COUNTERPARTY",
+				"type": "String"
+			},
+			{
+				"name": "CURRENT_FACE_VALUE",
+				"type": "String"
+			},
+			{
+				"name": "CUSTODY",
+				"type": "String"
+			},
+			{
+				"name": "DIRTY_PRICE_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "DIRTY_VALUE_TOTAL_PC",
+				"type": "String"
+			},
+			{
+				"name": "DIRTY_VALUE_TOTAL_QC",
+				"type": "String"
+			},
+			{
+				"name": "DIV_COUPON_RECEIVABLES_BASE",
+				"type": "String"
+			},
+			{
+				"name": "DIV_COUPON_RECEIVABLES_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "DOLLAR_DURATION",
+				"type": "String"
+			},
+			{
+				"name": "EDM_LOWEST_LEVEL_PORTFOLIO_ID",
+				"type": "String"
+			},
+			{
+				"name": "EDM_PORTFOLIO_GROUP_ID",
+				"type": "String"
+			},
+			{
+				"name": "ENTITY_STATUS_ID",
+				"type": "String"
+			},
+			{
+				"name": "EXPECTED_RESTITUTION_BASE",
+				"type": "String"
+			},
+			{
+				"name": "EXPECTED_RESTITUTION_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "EXPOSURE_BASE",
+				"type": "String"
+			},
+			{
+				"name": "EXPOSURE_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "FUTURES_PRICE_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "FX_FACTOR_COST_VALUE",
+				"type": "String"
+			},
+			{
+				"name": "FX_FACTOR_FORWARD",
+				"type": "String"
+			},
+			{
+				"name": "FX_RATE",
+				"type": "String"
+			},
+			{
+				"name": "FX_RATE_COST",
+				"type": "String"
+			},
+			{
+				"name": "IMPAIRMENT_CURRENCY_BASE",
+				"type": "String"
+			},
+			{
+				"name": "IMPAIRMENT_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "IMPAIRMENT_PROVISION_BASE",
+				"type": "String"
+			},
+			{
+				"name": "IMPAIRMENT_PROVISION_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "IMPAIRMENT_SECURITY_BASE",
+				"type": "String"
+			},
+			{
+				"name": "LEG_NUMBER",
+				"type": "String"
+			},
+			{
+				"name": "LOCAL_CURRENCY_CODE",
+				"type": "String"
+			},
+			{
+				"name": "LONG_SHORT_INDICATOR",
+				"type": "String"
+			},
+			{
+				"name": "LOWEST_LEVEL_PORTFOLIO",
+				"type": "String"
+			},
+			{
+				"name": "MACAULAY_DURATION",
+				"type": "String"
+			},
+			{
+				"name": "MARKET_PRICE_BASE",
+				"type": "String"
+			},
+			{
+				"name": "MARKET_PRICE_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "MARKET_VALUE_ACCRUED_INTEREST_BASE",
+				"type": "String"
+			},
+			{
+				"name": "MARKET_VALUE_ACCRUED_INTEREST_BASE_NAV",
+				"type": "String"
+			},
+			{
+				"name": "MARKET_VALUE_ACCRUED_INTEREST_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "MARKET_VALUE_ACCRUED_INTEREST_LOCAL_NAV",
+				"type": "String"
+			},
+			{
+				"name": "MARKET_VALUE_ACCRUED_INTEREST_WEIGHT",
+				"type": "String"
+			},
+			{
+				"name": "MARKET_VALUE_BASE",
+				"type": "String"
+			},
+			{
+				"name": "MARKET_VALUE_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "MARKET_VALUE_WEIGHT",
+				"type": "String"
+			},
+			{
+				"name": "MATURITY_PRICE",
+				"type": "String"
+			},
+			{
+				"name": "MIRROR_TRANSACTION",
+				"type": "String"
+			},
+			{
+				"name": "MODIFIED_DURATION",
+				"type": "String"
+			},
+			{
+				"name": "ON_MARGIN",
+				"type": "String"
+			},
+			{
+				"name": "ORIGINAL_FACE_AMOUNT_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "PAYABLES_BASE",
+				"type": "String"
+			},
+			{
+				"name": "PAYABLES_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "PORTFOLIO_CALCULATION",
+				"type": "String"
+			},
+			{
+				"name": "PORTFOLIO_CALCULATION_CODE",
+				"type": "String"
+			},
+			{
+				"name": "PORTFOLIO_GROUP_ID",
+				"type": "String"
+			},
+			{
+				"name": "POSITION_SIGN",
+				"type": "String"
+			},
+			{
+				"name": "PRICE_DATE",
+				"type": "String"
+			},
+			{
+				"name": "PURCHASE_DATE",
+				"type": "String"
+			},
+			{
+				"name": "QUANTITY",
+				"type": "String"
+			},
+			{
+				"name": "REAL_MODIFIED_DURATION",
+				"type": "String"
+			},
+			{
+				"name": "RECEIVABLES_BASE",
+				"type": "String"
+			},
+			{
+				"name": "RECEIVABLES_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "RECLAIM_RECEIVABLES_BASE",
+				"type": "String"
+			},
+			{
+				"name": "RECLAIM_RECEIVABLES_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "REPOCOUPON_BASE",
+				"type": "String"
+			},
+			{
+				"name": "REPOCOUPON_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "TOTAL_COST_BASE",
+				"type": "String"
+			},
+			{
+				"name": "TOTAL_COST_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "UNIT_COST_BASE",
+				"type": "String"
+			},
+			{
+				"name": "UNIT_COST_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "UNREALISED_REAL_INT_APPR_PC",
+				"type": "String"
+			},
+			{
+				"name": "UNREALIZED_PL_CURRENCY_BASE",
+				"type": "String"
+			},
+			{
+				"name": "UNREALIZED_PL_SECURITY_BASE",
+				"type": "String"
+			},
+			{
+				"name": "UNREALIZED_PL_VALUE_LOCAL",
+				"type": "String"
+			},
+			{
+				"name": "YIELD_AT_AMORTIZED_BOOK",
+				"type": "String"
+			},
+			{
+				"name": "YIELD_AT_COST",
+				"type": "String"
+			},
+			{
+				"name": "YIELD_AT_MATURITY",
+				"type": "String"
+			},
+			{
+				"name": "CADIS_SYSTEM_INSERTED",
+				"type": "String"
+			},
+			{
+				"name": "CADIS_SYSTEM_UPDATED",
+				"type": "String"
+			},
+			{
+				"name": "CADIS_SYSTEM_CHANGEDBY",
+				"type": "String"
+			},
+			{
+				"name": "UPDATEID",
 				"type": "String"
 			}
 		]
