@@ -21,6 +21,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "@concat(dataset().FileName,dataset().Timestamp,dataset().FileExtension)",
 				"folderPath": "SCD",
 				"fileSystem": "data"
 			},
