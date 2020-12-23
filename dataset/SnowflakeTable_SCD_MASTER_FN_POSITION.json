@@ -1,0 +1,677 @@
+{
+	"name": "SnowflakeTable_SCD_MASTER_FN_POSITION",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Snowflake1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeTable",
+		"schema": [
+			{
+				"name": "MASTER_FN_POSITION_V1_KEY",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "EDM_PORTFOLIO_ID",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "EDM_INSTRUMENT_ID",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "EFFECTIVE_DATE",
+				"type": "TIMESTAMP_NTZ",
+				"precision": 29,
+				"scale": 9
+			},
+			{
+				"name": "SOURCE",
+				"type": "VARCHAR",
+				"precision": 50,
+				"scale": 0
+			},
+			{
+				"name": "SUB_PORTFOLIO_CODE",
+				"type": "VARCHAR",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "ACCOUNTING_FRAMEWORK",
+				"type": "VARCHAR",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "ACCRUED_INTEREST_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "ACCRUED_INTEREST_EOP_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "ACCRUED_INTEREST_EOP_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "ACCRUED_INTEREST_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "ACCRUED_INTEREST_UNSETTLED_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "ACCRUED_INTEREST_UNSETTLED_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "ACCRUED_INTEREST_FUTURE_VALUE_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "ACCRUED_INTEREST_FUTURE_VALUE_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "ACTIVE_INDICATOR",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "ALLOCATED_PL_IFRS",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "ALLOCATED_PL_TRXGL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "AMORTIZED_BOOK_VALUE_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "AMORTIZED_BOOK_VALUE_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "BALANCE_AMORTISED_COST_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "BALANCE_CASH_TRADE_DATE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "BALANCE_COMMITMENT_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "BALANCE_COMMITMENT_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "BALANCE_NUMBER_OF_UNITS",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "BALANCE_UNPAID_COMMITMENT_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "BALANCE_UNPAID_COMMITMENT_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "BALANCE_VARIATION_MARGIN_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "BALANCE_VARIATION_MARGIN_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "BLOCKING_TYPE",
+				"type": "VARCHAR",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "BOOKED_PRICE_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "BOOKED_PRICE_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "COMPOUND",
+				"type": "VARCHAR",
+				"precision": 12,
+				"scale": 0
+			},
+			{
+				"name": "COUNTERPARTY",
+				"type": "VARCHAR",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "CURRENT_FACE_VALUE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "CUSTODY",
+				"type": "VARCHAR",
+				"precision": 50,
+				"scale": 0
+			},
+			{
+				"name": "DIRTY_PRICE_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "DIRTY_VALUE_TOTAL_PC",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "DIRTY_VALUE_TOTAL_QC",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "DIV_COUPON_RECEIVABLES_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "DIV_COUPON_RECEIVABLES_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "DOLLAR_DURATION",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "EDM_LOWEST_LEVEL_PORTFOLIO_ID",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "EDM_PORTFOLIO_GROUP_ID",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "ENTITY_STATUS_ID",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "EXPECTED_RESTITUTION_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "EXPECTED_RESTITUTION_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "EXPOSURE_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "EXPOSURE_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "FUTURES_PRICE_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "FX_FACTOR_COST_VALUE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "FX_FACTOR_FORWARD",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "FX_RATE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "FX_RATE_COST",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "IMPAIRMENT_CURRENCY_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "IMPAIRMENT_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "IMPAIRMENT_PROVISION_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "IMPAIRMENT_PROVISION_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "IMPAIRMENT_SECURITY_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "LEG_NUMBER",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "LOCAL_CURRENCY_CODE",
+				"type": "VARCHAR",
+				"precision": 3,
+				"scale": 0
+			},
+			{
+				"name": "LONG_SHORT_INDICATOR",
+				"type": "VARCHAR",
+				"precision": 50,
+				"scale": 0
+			},
+			{
+				"name": "LOWEST_LEVEL_PORTFOLIO",
+				"type": "VARCHAR",
+				"precision": 15,
+				"scale": 0
+			},
+			{
+				"name": "MACAULAY_DURATION",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "MARKET_PRICE_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "MARKET_PRICE_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "MARKET_VALUE_ACCRUED_INTEREST_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "MARKET_VALUE_ACCRUED_INTEREST_BASE_NAV",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "MARKET_VALUE_ACCRUED_INTEREST_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "MARKET_VALUE_ACCRUED_INTEREST_LOCAL_NAV",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "MARKET_VALUE_ACCRUED_INTEREST_WEIGHT",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "MARKET_VALUE_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "MARKET_VALUE_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "MARKET_VALUE_WEIGHT",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "MATURITY_PRICE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "MIRROR_TRANSACTION",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "MODIFIED_DURATION",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "ON_MARGIN",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "ORIGINAL_FACE_AMOUNT_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "PAYABLES_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "PAYABLES_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "PORTFOLIO_CALCULATION",
+				"type": "VARCHAR",
+				"precision": 25,
+				"scale": 0
+			},
+			{
+				"name": "PORTFOLIO_CALCULATION_CODE",
+				"type": "VARCHAR",
+				"precision": 25,
+				"scale": 0
+			},
+			{
+				"name": "PORTFOLIO_GROUP_ID",
+				"type": "VARCHAR",
+				"precision": 15,
+				"scale": 0
+			},
+			{
+				"name": "POSITION_SIGN",
+				"type": "VARCHAR",
+				"precision": 25,
+				"scale": 0
+			},
+			{
+				"name": "PRICE_DATE",
+				"type": "TIMESTAMP_NTZ",
+				"precision": 29,
+				"scale": 9
+			},
+			{
+				"name": "PURCHASE_DATE",
+				"type": "TIMESTAMP_NTZ",
+				"precision": 29,
+				"scale": 9
+			},
+			{
+				"name": "QUANTITY",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "REAL_MODIFIED_DURATION",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "RECEIVABLES_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "RECEIVABLES_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "RECLAIM_RECEIVABLES_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "RECLAIM_RECEIVABLES_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "REPOCOUPON_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "REPOCOUPON_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "TOTAL_COST_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "TOTAL_COST_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "UNIT_COST_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "UNIT_COST_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "UNREALISED_REAL_INT_APPR_PC",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "UNREALIZED_PL_CURRENCY_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "UNREALIZED_PL_SECURITY_BASE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "UNREALIZED_PL_VALUE_LOCAL",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "YIELD_AT_AMORTIZED_BOOK",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "YIELD_AT_COST",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "YIELD_AT_MATURITY",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 12
+			},
+			{
+				"name": "CADIS_SYSTEM_INSERTED",
+				"type": "TIMESTAMP_NTZ",
+				"precision": 29,
+				"scale": 9
+			},
+			{
+				"name": "CADIS_SYSTEM_UPDATED",
+				"type": "TIMESTAMP_NTZ",
+				"precision": 29,
+				"scale": 9
+			},
+			{
+				"name": "CADIS_SYSTEM_CHANGEDBY",
+				"type": "VARCHAR",
+				"precision": 100,
+				"scale": 0
+			},
+			{
+				"name": "UPDATEID",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "SCD",
+			"table": "MASTER_FN_POSITION"
+		}
+	}
+}
